@@ -1,0 +1,37 @@
+local UserInputService = game:GetService("UserInputService")
+local RunService = game:GetService("RunService")
+local Camera = workspace.CurrentCamera
+
+local activationKey = Enum.KeyCode.B
+local defaultOffset = Vector3.new(0, 0, 0)
+local targetOffset = Vector3.new(0, 0, 1.8)
+local transitionSpeed = 10
+
+local currentOffset = defaultOffset
+local isActive = false
+local debounce = false
+
+local function updateCamera()
+    if not Camera then return end
+    Camera.CFrame = Camera.CFrame + Camera.CFrame:VectorToWorldSpace(currentOffset)
+end
+
+local function toggleState()
+    isActive = not isActive
+    debounce = false
+end
+
+local function onInputBegan(input)
+    if input.KeyCode == activationKey and not debounce then
+        debounce = true
+        toggleState()
+    end
+end
+
+RunService.RenderStepped:Connect(function(dt)
+    local target = isActive and targetOffset or defaultOffset
+    currentOffset = currentOffset:Lerp(target, dt * transitionSpeed)
+    updateCamera()
+end)
+
+UserInputService.InputBegan:Connect(onInputBegan)
