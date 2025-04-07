@@ -4,7 +4,7 @@ local Camera = workspace.CurrentCamera
 
 local activationKey = Enum.KeyCode.F1
 local defaultOffset = Vector3.new(0, 0, 0)
-local targetOffset = Vector3.new(0, 0, 1.8)
+local targetOffset = Vector3.new(0, 0, 1.4)
 local transitionSpeed = 10
 
 local currentOffset = defaultOffset
