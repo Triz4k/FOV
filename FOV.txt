@@ -2,7 +2,7 @@ local UserInputService = game:GetService("UserInputService")
 local RunService = game:GetService("RunService")
 local Camera = workspace.CurrentCamera
 
-local activationKey = Enum.KeyCode.B
+local activationKey = Enum.KeyCode.F1
 local defaultOffset = Vector3.new(0, 0, 0)
 local targetOffset = Vector3.new(0, 0, 1.8)
 local transitionSpeed = 10
